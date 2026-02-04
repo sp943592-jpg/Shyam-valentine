@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Lakshitha 💖</title>
+
+<style>
+body {
+    background: #ffe6ea;
+    font-family: Arial;
+    text-align: center;
+    margin-top: 100px;
+    overflow: hidden;
+}
+
+.box {
+    background: white;
+    padding: 25px;
+    width: 340px;
+    margin: auto;
+    border-radius: 15px;
+    box-shadow: 0 0 15px pink;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 18px;
+    margin: 10px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#yes { background: #ff4d6d; color: white; }
+
+#no {
+    background: #999;
+    color: white;
+    position: absolute;   /* makes it run */
+}
+
+/* hearts */
+.heart {
+    position: absolute;
+    color: red;
+    font-size: 22px;
+    animation: fly 3s linear infinite;
+}
+
+@keyframes fly {
+    0% { transform: translateY(0); opacity: 1; }
+    100% { transform: translateY(-600px); opacity: 0; }
+}
+
+#secondPage {
+    display: none;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="box" id="firstPage">
+    <h2>Lakshitha 💖</h2>
+
+    <p>Just one small question from Shyam Prasad 😊</p>
+
+    <h3>Will you be my Valentine?</h3>
+
+    <button id="yes" onclick="accepted()">Yes</button>
+    <button id="no" onmouseover="runAway()">No</button>
+
+    <p style="font-size:13px;margin-top:10px;">
+    “No matter how many times you try,  
+    No is not an option with Shyam 😌”
+    </p>
+
+    <p id="msg"></p>
+</div>
+
+
+<!-- SECOND PAGE AFTER YES -->
+<div class="box" id="secondPage">
+    <h2>Yay! She said YES! 💘</h2>
+
+    <p>
+    Dear Lakshitha,<br><br>
+
+    From today you’re officially<br>
+    Shyam Prasad’s Valentine ❤️<br><br>
+
+    I promise to make you smile,<br>
+    annoy you a little,<br>
+    care for you a lot,<br>
+    and choose you every day 💖
+    </p>
+
+    <h3>Happy Valentine’s Day 🌹</h3>
+</div>
+
+
+<script>
+function accepted() {
+    document.getElementById("firstPage").style.display = "none";
+    document.getElementById("secondPage").style.display = "block";
+
+    startHearts();
+    startConfetti();
+}
+
+function runAway() {
+    var btn = document.getElementById("no");
+
+    var x = Math.random() * (window.innerWidth - 120);
+    var y = Math.random() * (window.innerHeight - 80);
+
+    btn.style.left = x + "px";
+    btn.style.top = y + "px";
+}
+
+
+/* HEART ANIMATION */
+function startHearts() {
+    setInterval(() => {
+        var heart = document.createElement("div");
+        heart.className = "heart";
+        heart.innerHTML = "💖";
+
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "80vh";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => { heart.remove(); }, 3000);
+    }, 200);
+}
+
+
+/* SIMPLE CONFETTI */
+function startConfetti() {
+    for(let i=0; i<60; i++) {
+        let c = document.createElement("div");
+        c.className = "heart";
+        c.innerHTML = "🎉";
+
+        c.style.left = Math.random()*100 + "vw";
+        c.style.top = Math.random()*100 + "vh";
+
+        document.body.appendChild(c);
+
+        setTimeout(()=>{ c.remove(); }, 3000);
+    }
+}
+</script>
+
+</body>
+</html>
